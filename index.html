@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>マインスイーパー | クラシックなパズルゲーム</title>
+<meta name="description" content="マインスイーパーを無料でプレイ！初心者から上級者まで楽しめるクラシックなパズルゲーム。難易度も選べて、頭の体操に最適です。今すぐブラウザで挑戦しよう！">
+<link rel="canonical" href="https://kaloodinaz.github.io/minesweeper-google/"> 
+<link rel="apple-touch-icon" sizes="180x180" href="https://kaloodinaz.github.io/minesweeper-google/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kaloodinaz.github.io/minesweeper-google/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kaloodinaz.github.io/minesweeper-google/favicon-16x16.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Open Sans",sans-serif;line-height:1.6;background-color:#f0f0f0}
+header{background-color:#0ba360;color:#fff;text-align:center;padding:.5rem;padding-left:20px}
+header span{display:block;text-align:center;font-size:24px;font-weight:700}
+.container{max-width:1200px;margin:0 auto;padding:20px}
+.game-container{margin:20px auto;text-align:center;max-width:800px}
+.game-frame{width:100%;max-width:800px;height:450px;border:none;background-color:#fff;box-shadow:0 2px 5px #0000001a}
+.game-info{max-width:800px;margin:20px auto;background-color:#fff;padding:20px;border-radius:5px;box-shadow:0 2px 5px #0000001a}
+.game-info h2{color:#0ba360;margin-bottom:5px;font-size:16px;font-weight:700}
+.game-info p{margin-bottom:10px}
+.game-icons{max-width:800px;margin:20px auto;text-align:center;display:flex;justify-content:space-evenly;padding:0 20px}
+.game-icons a{display:inline-block;text-decoration:none;text-align:center;flex:0 1 22%;max-width:120px}
+.game-icons img{transition:transform .2s;margin-bottom:5px}
+.game-icons .game-title{display:block;color:#666;font-size:14px;margin-top:5px;font-weight:700;min-height:40px}
+.game-icons img:hover{transform:scale(1.1)}
+footer{color:#666;text-align:center;padding:.5rem;font-size:14px;margin-top:20px}
+footer a{color:#666;text-decoration:none}
+footer a:hover{text-decoration:underline}
+.game-info ul{padding-left:20px}
+.game-info li{margin:8px 0;padding:4px 0}
+.game-title-main{text-align:center;color:#333;margin:20px 0;font-size:24px}
+#fullscreenButton{padding:15px 30px;margin:15px auto;background-color:#007bff;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:16px;display:inline-flex;align-items:center;justify-content:center;transition:background-color 0.3s,transform .2s}
+#fullscreenButton:hover{background-color:#0056b3;transform:scale(1.05)}
+#fullscreenButtonContainer{display:flex;justify-content:center;align-items:center;text-align:center}
+#fullscreenButton svg{margin-left:8px;width:20px;height:20px;fill:currentColor}
+.block{display:flex;justify-content:center;align-items:center;margin:0 auto}
+.block-300{display:none;width:100%;height:250px;background-color:#8f7a66}
+.block-728{display:none;width:100%;max-width:728px;height:90px;background-color:#8f7a66}
+@media only screen and (max-width: 738px) {
+.block-300{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;margin-bottom:10px;border-radius:10px;margin-top:10px}
+.block-728{display:none}
+}
+@media only screen and (min-width: 739px) {
+.block-728{display:flex;justify-content:center;align-items:center;margin-bottom:10px;border-radius:10px;margin-top:10px}
+.block-300{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+<span>マインスイーパー</span>
+</header>
+
+<div class="container">
+<h1 class="game-title-main">Google マインスイーパーの遊び方</h1>
+<div class="game-container">
+<iframe loading="lazy" src="game.html" class="game-frame" title="マインスイーパー google" id="gameFrame" scrolling="no" allowfullscreen></iframe>
+<div id="fullscreenButtonContainer">
+    <button id="fullscreenButton">
+        フルスクリーン
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M7 14H5v5h5v-2H7v-3zm12-9h-5v2h3v3h2V5zm0 9h-2v3h-3v2h5v-5zM7 5h3v2H7v3H5V5h2z"/>
+      </svg>
+    </button>
+  </div>
+<p style="margin-top: 8px; font-size: 12px;color: #333;">
+  <h2>ゲームの目的</h2>
+            <p>マインスイーパーでは、地雷を避けてフィールド上のすべての安全なマスを開けることが目標です。</p>
+  
+            <h2>基本操作</h2>
+            <ul>
+                <li>クリックしてマスを開ける。</li>
+                <li>数字が表示されるマスは、隣接する地雷の数を示しています。</li>
+                <li>数字を手掛かりに地雷の位置を推理して、地雷を開けずに安全なマスを開けていきます。</li>
+                <li>地雷を開けてしまうとゲームオーバーです。</li>
+            </ul>
+
+            <h3>ヒント</h3>
+            <ul>
+                <li>右クリックで旗を立てて地雷をマークできます。</li>
+                <li>数字をうまく組み合わせて、地雷の位置を予測しましょう。</li>
+            </ul>
+   
+            <p>Googleで気軽にマインスイーパーを楽しんでください！</p>
+</p>
+</div>
+        
+<div class="game-icons">
+<a href="https://kaloodinaz.github.io/dinosaurgame/">
+<img loading="lazy" src="https://kaloodinaz.github.io/dinosaurgame/img/dinosaurgame.png" alt="Google Chrome 恐竜ゲーム" width="80" height="80">
+<span class="game-title">恐竜ゲーム</span>
+</a>
+
+<a href="https://kaloodinaz.github.io/dinosaurgame/naruto/">
+<img loading="lazy" src="https://kaloodinaz.github.io/dinosaurgame/img/naruto-dinosaur-game.png" alt="走れ！ナルトGoogle Chrome 恐竜ゲーム" width="80" height="80">
+<span class="game-title">走れ！ナルト恐竜ゲーム</span>
+</a>
+          
+<a href="https://kaloodinaz.github.io/dinosaurgame/corona/">
+<img loading="lazy" src="https://kaloodinaz.github.io/dinosaurgame/img/corona-dinosaur-game.png" alt="走れ！コロナウイルス Google Chrome 恐竜ゲーム" width="80" height="80">
+<span class="game-title">走れ！コロナウイルス恐竜ゲーム</span>
+</a>
+<a href="https://blockbreaker2.pages.dev/">
+<img loading="lazy" src="https://kaloodinaz.github.io/dinosaurgame/img/google-block-breaker.webp" alt="Googleブロック ブレイカー" width="80" height="80">
+<span class="game-title">Googleブロック ブレイカー</span>
+</a>
+</div>
+<div class="game-info">
+  <h2>マインスイーパーとは？</h2>
+    <hr>
+    <div class="block block-728"><script type="text/javascript">
+     atOptions = {
+       'key' : 'd1d26e15f7c349fd8e403bb5ea491a31',
+       'format' : 'iframe',
+       'height' : 90,
+       'width' : 728,
+       'params' : {}
+     };
+   </script>
+   <script type="text/javascript" src="//www.highperformanceformat.com/d1d26e15f7c349fd8e403bb5ea491a31/invoke.js"></script></div>
+       <div class="block block-300"><script type="text/javascript">
+     atOptions = {
+       'key' : '0fee57062f9bb330edc13a4e4349876d',
+       'format' : 'iframe',
+       'height' : 250,
+       'width' : 300,
+       'params' : {}
+     };
+   </script>
+   <script type="text/javascript" src="//www.highperformanceformat.com/0fee57062f9bb330edc13a4e4349876d/invoke.js"></script></div>
+   
+
+    <p>マインスイーパーは、シンプルでありながら深い戦略が求められるクラシックなパズルゲームです。ゲームの目的は、地雷が埋め込まれたフィールド上で、地雷を避けながらすべての安全なマスを開けることです。ゲームを進めるには、数字ヒントを活用して、地雷の位置を推理する能力が重要です。</p>
+
+    <h2>マインスイーパーの基本ルール</h2>
+    <ul>
+        <li>ゲーム盤には隠れた地雷がいくつか配置されています。</li>
+        <li>プレイヤーは、地雷のないマスをクリックして開けていきます。</li>
+        <li>開けたマスに表示される数字は、そのマスに隣接する地雷の数を示しています。</li>
+        <li>数字のヒントをもとに、安全なマスを推理して開けていきます。</li>
+        <li>地雷を開けるとゲームオーバーです。</li>
+    </ul>
+    <img loading="lazy" src="https://kaloodinaz.github.io/minesweeper-google/minesweeper-screenshot.png" alt="マインスイーパー - Google" style="max-width: 100%; height: auto; margin: 10px 0;">
+    
+    <h2>マインスイーパーの楽しみ方</h2>
+    <p>マインスイーパーは、単純なゲームルールながらも、プレイヤーの推理力や注意力を試すゲームです。初心者から上級者まで楽しめる難易度が用意されており、最初は簡単なレベルで練習し、慣れてきたらより難しいレベルに挑戦できます。地雷の位置を予測する感覚が身についてくると、ゲームがより楽しくなります。</p>
+
+    <h2>Googleでのマインスイーパー</h2>
+    <p>Googleでは、ブラウザ上で無料でマインスイーパーをプレイできます。ゲームにアクセスするだけで、すぐに楽しむことができ、手軽にチャレンジできます。Googleのマインスイーパーは、オリジナルのゲームに忠実で、シンプルなインターフェースが特徴です。パソコンやモバイルで手軽にプレイできます。</p>
+
+</div>
+</div>
+<script>
+const gameFrame = document.querySelector('.game-frame');
+window.addEventListener('load', function() {
+gameFrame.focus();
+});
+window.addEventListener('keydown', function(e) {
+if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+e.preventDefault();
+gameFrame.focus();
+}
+});
+</script>
+<script>
+    document.getElementById('fullscreenButton').addEventListener('click', function () {
+      const iframe = document.getElementById('gameFrame');
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.mozRequestFullScreen) { /* Firefox */
+        iframe.mozRequestFullScreen();
+      } else if (iframe.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.msRequestFullscreen) { /* IE/Edge */
+        iframe.msRequestFullscreen();
+      } else {
+        alert("お使いのブラウザはフルスクリーンモードに対応していません。");
+      }
+    });
+    </script>
+<footer>
+<p>&copy; 2025 マインスイーパー google </p>
+<p>さあ、あなたもマインスイーパーで地雷を避けるスリルを体験してみましょう！</p>
+<p><a href="https://suikagamejp.com/" target="_blank" rel="noopener">スイカゲーム</a> | <a href="https://kaloodinaz.github.io/2048-flappy/" target="_blank" rel="noopener">2048フラッピー</a></p>
+</footer>
+</body>
+</html>
