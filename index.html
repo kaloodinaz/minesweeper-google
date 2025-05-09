@@ -2,6 +2,8 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#151515" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>マインスイーパー | クラシックなパズルゲーム</title>
 <meta name="description" content="マインスイーパーを無料でプレイ！初心者から上級者まで楽しめるクラシックなパズルゲーム。難易度も選べて、頭の体操に最適です。今すぐブラウザで挑戦しよう！">
@@ -50,6 +52,11 @@ footer a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
+<script>
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/sw.js')
+.then(registration => {console.log('Service Worker registered successfully:', registration);})
+.catch(error => {console.log('Error in Service Worker registration:', error);});});}
+</script>
 <header>
 <span>マインスイーパー</span>
 </header>
